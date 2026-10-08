@@ -1,1 +1,653 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عشان يومك يبقى أحلى يا حبيبة 💗</title>
 
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+
+:root {
+  --pink: #ff8db7;
+  --light: #ffe0ed;
+  --purple: #9a78ff;
+  --bg: #130d26;
+  --card: rgba(255,255,255,.075);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Cairo', sans-serif;
+  color: #fff5fb;
+  background:
+    radial-gradient(ellipse at top, #38204f 0%, transparent 55%),
+    linear-gradient(160deg, #100b20, #211333 55%, #130d26);
+  overflow-x: hidden;
+}
+
+button { font-family: inherit; cursor: pointer; }
+
+#stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  color: #ffd9eb;
+  opacity: .7;
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%,100% { opacity: .18; transform: scale(.8); }
+  50% { opacity: .95; transform: scale(1.25); }
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.09); }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: min(920px, 92%);
+  margin: auto;
+  padding: 24px 0 55px;
+}
+
+.hero {
+  min-height: 390px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 45px 16px 30px;
+  animation: appear 1s ease both;
+}
+
+.sun {
+  font-size: 68px;
+  filter: drop-shadow(0 0 24px #ffb5d2);
+  animation: float 4s infinite ease-in-out;
+}
+
+.eyebrow {
+  color: #ffb8d5;
+  letter-spacing: 2px;
+  font-size: 13px;
+  margin-top: 16px;
+}
+
+h1 {
+  font-size: clamp(35px, 8vw, 65px);
+  line-height: 1.35;
+  margin: 8px 0;
+  background: linear-gradient(90deg, #fff, #ffc5df, #d9c9ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  max-width: 600px;
+  color: #e5d7f2;
+  line-height: 2;
+  font-size: 16px;
+}
+
+.pill {
+  display: inline-block;
+  border: 1px solid #ffffff30;
+  border-radius: 30px;
+  padding: 8px 17px;
+  color: #ffd9e9;
+  background: #ffffff0b;
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.section {
+  margin: 22px 0;
+  padding: 25px;
+  background: var(--card);
+  border: 1px solid #ffffff16;
+  border-radius: 25px;
+  box-shadow: 0 14px 40px #00000018;
+  backdrop-filter: blur(10px);
+  animation: appear .7s ease both;
+}
+
+.section h2 {
+  font-size: clamp(22px, 5vw, 30px);
+  margin: 0 0 8px;
+  color: #ffd3e6;
+}
+
+.description {
+  color: #d8cce7;
+  line-height: 1.9;
+  margin: 0 0 17px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+  gap: 12px;
+}
+
+.choice, .gift, .answer {
+  border: 1px solid #ffffff20;
+  color: #fff;
+  background: #ffffff0b;
+  border-radius: 17px;
+  padding: 15px 10px;
+  transition: .25s;
+  font-size: 15px;
+}
+
+.choice:hover, .gift:hover, .answer:hover {
+  transform: translateY(-4px);
+  background: #ff8db724;
+  border-color: #ffb6d3;
+}
+
+.choice .emoji, .gift .emoji {
+  display: block;
+  font-size: 30px;
+  margin-bottom: 7px;
+}
+
+.result {
+  display: none;
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  line-height: 2;
+  background: #ffb6d315;
+  border: 1px solid #ffb6d32b;
+  color: #ffe6f1;
+  animation: appear .5s ease;
+}
+
+.primary {
+  border: 0;
+  padding: 12px 22px;
+  color: #30162b;
+  font-weight: 800;
+  font-size: 15px;
+  border-radius: 30px;
+  background: linear-gradient(100deg, #ffc2dd, #d9c8ff);
+  box-shadow: 0 7px 22px #c07bba25;
+  transition: .2s;
+}
+
+.primary:hover { transform: scale(1.04); }
+
+.gift {
+  min-height: 125px;
+  font-weight: 700;
+}
+
+.gift.opened {
+  background: #e4c7ff18;
+  border-color: #d5b5ff;
+}
+
+.pretty-card {
+  position: relative;
+  overflow: hidden;
+  padding: 28px 20px;
+  text-align: center;
+  border: 1px solid #ffc4df50;
+  border-radius: 25px;
+  background:
+    radial-gradient(circle at top left, #ffb6d31c, transparent 45%),
+    linear-gradient(145deg, #3c244e, #21152f);
+}
+
+.card-label {
+  color: #ffc5df;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.card-flower {
+  font-size: 43px;
+  margin: 10px 0;
+  animation: float 4s infinite ease-in-out;
+}
+
+.card-title {
+  font-size: clamp(23px, 5vw, 34px);
+  line-height: 1.7;
+  color: #ffe0ed;
+  margin: 8px 0;
+}
+
+.card-quote {
+  font-size: 16px;
+  color: #fff0f7;
+  line-height: 2.2;
+  margin: 15px auto;
+  max-width: 590px;
+}
+
+.card-line {
+  height: 1px;
+  width: 70%;
+  margin: 18px auto;
+  background: linear-gradient(90deg, transparent, #ffb7d7, transparent);
+}
+
+.card-extra {
+  display: none;
+  color: #f3dfff;
+  line-height: 2.1;
+  margin-top: 18px;
+  animation: appear .5s ease;
+}
+
+.card-ending {
+  color: #ffc8e1;
+  font-weight: 800;
+  margin-top: 14px;
+}
+
+.card-sign {
+  color: #cdb9e9;
+  font-size: 13px;
+  margin-top: 16px;
+}
+
+.question {
+  padding: 18px;
+  background: #ffffff08;
+  border-radius: 18px;
+  margin-top: 14px;
+}
+
+.question p { line-height: 1.9; font-weight: 700; }
+
+.answer {
+  margin: 5px;
+  padding: 10px 14px;
+}
+
+.progress {
+  height: 6px;
+  border-radius: 20px;
+  background: #ffffff15;
+  overflow: hidden;
+  margin: 12px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff9fc5, #c9adff);
+  transition: .4s;
+}
+
+.message-list {
+  display: grid;
+  gap: 10px;
+}
+
+.message {
+  text-align: right;
+  border: 1px solid #ffffff17;
+  background: #ffffff08;
+  color: #fceafa;
+  border-radius: 15px;
+  padding: 14px;
+  line-height: 1.9;
+}
+
+.hidden { display: none !important; }
+
+footer {
+  text-align: center;
+  padding: 28px 12px 8px;
+  color: #bfb0d2;
+  font-size: 13px;
+  line-height: 2;
+}
+
+#toast {
+  position: fixed;
+  z-index: 10;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 90%;
+  background: #fff0f7;
+  color: #351b39;
+  border-radius: 25px;
+  padding: 12px 20px;
+  box-shadow: 0 10px 35px #0005;
+  display: none;
+  text-align: center;
+  animation: appear .3s ease;
+}
+
+.heart {
+  position: fixed;
+  z-index: 2;
+  pointer-events: none;
+  animation: rise 3.5s linear forwards;
+}
+
+@keyframes rise {
+  from { transform: translateY(0) rotate(0); opacity: .9; }
+  to { transform: translateY(-100vh) rotate(35deg); opacity: 0; }
+}
+
+@media(max-width:500px) {
+  .section { padding: 19px 15px; }
+  .hero { min-height: 350px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+</style>
+</head>
+
+<body>
+<div id="stars"></div>
+<div id="toast"></div>
+
+<main class="container">
+
+  <header class="hero">
+    <div class="sun">☀️</div>
+    <div class="eyebrow">رسالة صغيرة مخصوص ليكي</div>
+    <h1>يا حبيبة 💗</h1>
+    <p class="subtitle">
+      مش لازم كل يوم يكون مثالي، بس يمكن لحظة صغيرة حلوة
+      تغيّر شكل اليوم كله… فقلت أعملك حاجة بسيطة يمكن ترسم ضحكة على وشك. 🌷
+    </p>
+    <span class="pill">خدي نفس عميق… ويلا نبدأ ✨</span>
+  </header>
+
+  <section class="section">
+    <h2>🌸 عاملة إيه النهارده؟</h2>
+    <p class="description">اختاري اللي شبه إحساسك دلوقتي، ومفيش إجابة غلط.</p>
+    <div class="grid">
+      <button class="choice" onclick="chooseMood('happy')">
+        <span class="emoji">😁</span>مبسوطة
+      </button>
+      <button class="choice" onclick="chooseMood('tired')">
+        <span class="emoji">😮‍💨</span>مجهدة
+      </button>
+      <button class="choice" onclick="chooseMood('sad')">
+        <span class="emoji">🥺</span>مضايقة
+      </button>
+      <button class="choice" onclick="chooseMood('unknown')">
+        <span class="emoji">🌧️</span>مش عارفة مالي
+      </button>
+    </div>
+    <div class="result" id="moodResult"></div>
+  </section>
+
+  <section class="section">
+    <h2>💌 كارت صغير ليكي</h2>
+    <p class="description">كلمتين من القلب، من غير مناسبة ولا سبب كبير.</p>
+
+    <div class="pretty-card" id="habiba-card">
+      <div class="card-label">A LITTLE NOTE FOR YOU ✨</div>
+      <div class="card-flower">🌷</div>
+      <h3 class="card-title">يا اللي شمس الدنيا بتطلع لما تطلع ضحكة منك ☀️</h3>
+      <p class="card-quote">
+        أتمنى يومك يبقى خفيف على قلبك، وضحكتك تفضل منوّرة وشك،
+        وتلاقي في يومك حاجة حلوة تنسيكي أي حاجة ضايقتك.
+      </p>
+      <div class="card-line"></div>
+      <button class="primary" onclick="openPrettyCard()">افتحي باقي الرسالة 💗</button>
+      <div class="card-extra" id="cardExtra">
+        مش كل يوم لازم يبقى مثالي، ومش لازم تبقي قوية طول الوقت.
+        خدي وقتك، ريّحي بالك، وافتكري إن بكرة ممكن يكون ألطف بكتير. 🦋
+        <div class="card-ending">خلي بالك من نفسك يا حبيبة 💗</div>
+        <div class="card-sign">رسالة صغيرة ليوم ألطف ✨</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>🎁 اختاري هدية من غير ما تعرفي إيه جواها</h2>
+    <p class="description">كل هدية وراها رسالة صغيرة ليكي. اختاري واحدة!</p>
+
+    <div class="grid">
+      <button class="gift" onclick="openGift(0,this)">
+        <span class="emoji">🎀</span>الهدية الأولى
+      </button>
+      <button class="gift" onclick="openGift(1,this)">
+        <span class="emoji">🧸</span>الهدية التانية
+      </button>
+      <button class="gift" onclick="openGift(2,this)">
+        <span class="emoji">🌈</span>الهدية التالتة
+      </button>
+      <button class="gift" onclick="openGift(3,this)">
+        <span class="emoji">🦋</span>الهدية الرابعة
+      </button>
+    </div>
+    <div class="result" id="giftResult"></div>
+  </section>
+
+  <section class="section">
+    <h2>🎮 اختبار صغير: اختاري بسرعة!</h2>
+    <p class="description">مفيش درجات ولا نجاح وسقوط… دي لعبة وخلاص 😄</p>
+
+    <div class="question">
+      <p>١. لو عندك ساعة فاضية، تختاري إيه؟</p>
+      <button class="answer" onclick="quizAnswer('راحة وهدوء 🧸')">راحة وهدوء 🧸</button>
+      <button class="answer" onclick="quizAnswer('خروجة لطيفة 🌷')">خروجة لطيفة 🌷</button>
+      <button class="answer" onclick="quizAnswer('أكل حلو وبس 🍰')">أكل حلو وبس 🍰</button>
+    </div>
+
+    <div class="question">
+      <p>٢. إيه أسرع حاجة ممكن تحسّن يومك؟</p>
+      <button class="answer" onclick="quizAnswer('كلمة حلوة 💌')">كلمة حلوة 💌</button>
+      <button class="answer" onclick="quizAnswer('ضحكة من القلب 😂')">ضحكة من القلب 😂</button>
+      <button class="answer" onclick="quizAnswer('نوم من غير منبّه 😴')">نوم من غير منبّه 😴</button>
+    </div>
+
+    <div class="question">
+      <p>٣. اختاري لون على مزاجك دلوقتي:</p>
+      <button class="answer" onclick="quizAnswer('وردي 🌸')">وردي 🌸</button>
+      <button class="answer" onclick="quizAnswer('بنفسجي 💜')">بنفسجي 💜</button>
+      <button class="answer" onclick="quizAnswer('أزرق سماوي 🩵')">أزرق سماوي 🩵</button>
+    </div>
+
+    <div class="progress"><div class="progress-fill" id="quizProgress"></div></div>
+    <div class="result" id="quizResult"></div>
+    <button class="primary" onclick="finishQuiz()">طلّعي نتيجة الاختبار ✨</button>
+  </section>
+
+  <section class="section">
+    <h2>☁️ افتحي رسالة على مزاجك</h2>
+    <p class="description">اختاري رسالة واقريها براحتك.</p>
+    <div class="message-list">
+      <button class="message" onclick="showNote(0)">🌷 محتاجة كلمة حلوة</button>
+      <button class="message" onclick="showNote(1)">🫶 محتاجة أهدى شوية</button>
+      <button class="message" onclick="showNote(2)">✨ محتاجة دفعة أمل</button>
+      <button class="message" onclick="showNote(3)">😂 محتاجة أضحك</button>
+    </div>
+    <div class="result" id="noteResult"></div>
+  </section>
+
+  <section class="section">
+    <h2>🎵 وقت الراحة والمزيكا</h2>
+    <p class="description">لو حابة تسمعي الأغنية، شغّليها من هنا وخدي وقت لنفسك.</p>
+    <audio id="song" controls preload="metadata" style="width:100%">
+      <source src="tiito.mp3" type="audio/mpeg">
+      المتصفح مش قادر يشغّل الملف الصوتي.
+    </audio>
+    <p style="color:#cdbbdf;font-size:12px;line-height:1.8">
+      لو الأغنية مش شغالة، اتأكدي إن ملف tiito.mp3 موجود جنب ملف index.html بنفس الاسم.
+    </p>
+  </section>
+
+  <section class="section" style="text-align:center">
+    <h2>🌟 وقبل ما تمشي…</h2>
+    <p class="description">
+      افتكري إنك مش مطالبة تخلّصي كل حاجة النهارده،
+      ولا إنك تبقي كويسة طول الوقت. خطوة صغيرة كفاية.
+    </p>
+    <button class="primary" onclick="lastSurprise()">اضغطي هنا للمفاجأة الأخيرة 🦋</button>
+    <div class="result" id="lastResult">
+      <div style="font-size:44px;margin-bottom:10px">🌈💗🌷</div>
+      <h3 style="color:#ffd5e7">أتمنى لك يوم ألطف يا حبيبة</h3>
+      أتمنى تلاقي سبب صغير تبتسمي عشانه،
+      وحاجة بسيطة تفرّح قلبك، ووقت ترتاحي فيه من دوشة الدنيا.
+      <br><br>
+      وخلي عندك يقين إن الأيام الصعبة مش بتفضل صعبة على طول. 🦋
+      <br><br>
+      <strong>ابتسمي لو تقدري… وارفقي بنفسك لو مش قادرة. 💗</strong>
+    </div>
+  </section>
+
+  <footer>
+    صُنعت بابتسامة، على أمل إنها توصلك ابتسامة كمان 🌷
+    <br>يومك ألطف وأجمل يا حبيبة 💗
+  </footer>
+
+</main>
+
+<script>
+const starBox = document.getElementById('stars');
+
+for (let i = 0; i < 65; i++) {
+  const star = document.createElement('span');
+  star.className = 'star';
+  star.textContent = Math.random() > 0.5 ? '✦' : '·';
+  star.style.left = Math.random() * 100 + '%';
+  star.style.top = Math.random() * 100 + '%';
+  star.style.fontSize = (8 + Math.random() * 13) + 'px';
+  star.style.animationDelay = Math.random() * 3 + 's';
+  starBox.appendChild(star);
+}
+
+function toast(message) {
+  const t = document.getElementById('toast');
+  t.textContent = message;
+  t.style.display = 'block';
+  clearTimeout(window.toastTimer);
+  window.toastTimer = setTimeout(() => t.style.display = 'none', 2800);
+}
+
+function chooseMood(mood) {
+  const messages = {
+    happy: 'يا سلام! 😍 حافظي على الإحساس الحلو ده، ولو حصل موقف يضايقك افتكري إنك تستاهلي لحظات حلوة كتير.',
+    tired: 'يبقى وقت الراحة شوية. 🧸 مش لازم تعملي كل حاجة مرة واحدة؛ اشربي حاجة بتحبيها وخدي نفس طويل.',
+    sad: 'أنا آسفة إنك مضايقة. 💗 مش لازم تشرحي إحساسك ولا تتظاهري إنك كويسة. خدي وقتك، وإن شاء الله اللي مضايقك يهون.',
+    unknown: 'في أيام بنبقى مش فاهمين إحنا حاسين بإيه، وده عادي. 🌧️ خدي اليوم واحدة واحدة ومتحمليش نفسك فوق طاقتها.'
+  };
+  const box = document.getElementById('moodResult');
+  box.textContent = messages[mood];
+  box.style.display = 'block';
+}
+
+const gifts = [
+  '🎀 هديتك الأولى: تذكير صغير إن وجودك في حياة الناس ممكن يخلّي يومهم ألطف، حتى من غير ما تاخدي بالك.',
+  '🧸 هديتك التانية: تصريح رسمي إن من حقك ترتاحي، وتكسلي شوية، وتقولي «كفاية عليّا كده النهارده».',
+  '🌈 هديتك التالتة: مفيش يوم وحش بيحكي القصة كلها. لسه فيه لحظات حلوة ممكن تيجي من حيث متتوقعيش.',
+  '🦋 هديتك الرابعة: أتمنى كل حاجة تقيلة على قلبك تخف، وكل حاجة مستنياها تفرّحك تيجي في وقتها الحلو.'
+];
+
+function openGift(index, button) {
+  const box = document.getElementById('giftResult');
+  box.textContent = gifts[index];
+  box.style.display = 'block';
+  button.classList.add('opened');
+  button.innerHTML = '<span class="emoji">💝</span>اتفتحت!';
+  toast('هدية صغيرة مخصوص ليكي 💗');
+  floatHearts(5);
+}
+
+function openPrettyCard() {
+  const extra = document.getElementById('cardExtra');
+  extra.style.display = 'block';
+  const btn = document.querySelector('#habiba-card button');
+  btn.style.display = 'none';
+  floatHearts(9);
+}
+
+let quizAnswers = [];
+
+function quizAnswer(answer) {
+  quizAnswers.push(answer);
+  const progress = Math.min(quizAnswers.length / 9 * 100, 100);
+  document.getElementById('quizProgress').style.width = progress + '%';
+  const box = document.getElementById('quizResult');
+  box.style.display = 'block';
+  box.textContent = 'اختيار جميل: ' + answer + ' 💗';
+}
+
+function finishQuiz() {
+  const box = document.getElementById('quizResult');
+  box.style.display = 'block';
+  if (quizAnswers.length === 0) {
+    box.textContent = 'اختاري إجابة واحدة على الأقل الأول يا حبيبة 😄';
+  } else {
+    box.innerHTML = 'نتيجتك الرسمية: إنسانة تستاهل يوم لطيف وحاجات حلوة كتير! 🏆💗<br>عدد اختياراتك: ' + quizAnswers.length + '<br>الجايزة: ابتسامة صغيرة وراحة بال إن شاء الله 🌷';
+    floatHearts(7);
+  }
+}
+
+const notes = [
+  'حتى لو يومك مش أحسن حاجة، ده مش معناه إن كل حاجة وحشة. إنتِ تستاهلي اللطف والراحة والكلام الحلو. 🌷',
+  'خدي نفس ببطء… دخّلي الهوا، وطلّعيه براحة. مش لازم تحلي كل حاجة دلوقتي. خطوة واحدة كفاية. 🫶',
+  'يمكن بكرة يحمل حاجة حلوة مكنتيش متوقعاها. خليكِ رحيمة بنفسك وادي للأيام فرصة. ✨',
+  'مرة واحد قرر يبطل تأجيل… قال هبدأ من بكرة! 😂 حتى الضحكة الصغيرة بتفرق، فاعتبري دي محاولة رسمية لابتسامة.'
+];
+
+function showNote(index) {
+  const box = document.getElementById('noteResult');
+  box.textContent = notes[index];
+  box.style.display = 'block';
+}
+
+function lastSurprise() {
+  const box = document.getElementById('lastResult');
+  box.style.display = 'block';
+  box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  floatHearts(16);
+}
+
+function floatHearts(count) {
+  const emojis = ['💗', '💕', '✨', '🌸', '🦋'];
+  for (let i = 0; i < count; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.bottom = '-25px';
+    heart.style.fontSize = (16 + Math.random() * 18) + 'px';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 3600);
+  }
+}
+</script>
+</body>
+</html>
