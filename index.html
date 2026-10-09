@@ -3,449 +3,389 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>رسالة صغيرة لحبيبة 💗</title>
+<title>مفاجأة لحبيبة 💗</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
-
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
-  min-height: 100vh;
-  font-family: 'Cairo', sans-serif;
-  color: #fff;
+  font-family: Tahoma, Arial, sans-serif;
+  background: linear-gradient(135deg, #fff0f7, #f0e7ff, #ffe6ef);
+  color: #673b70;
   text-align: center;
-  background: linear-gradient(145deg, #160d29, #40204f, #21152f);
   overflow-x: hidden;
 }
 
-#stars {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.star {
-  position: absolute;
-  color: #ffd6e8;
-  animation: sparkle 3s infinite ease-in-out;
-}
-
-@keyframes sparkle {
-  0%,100% { opacity: .2; }
-  50% { opacity: 1; }
-}
-
-@keyframes float {
-  50% { transform: translateY(-10px); }
-}
-
-main {
-  position: relative;
-  width: min(700px, 92%);
+.container {
+  width: 92%;
+  max-width: 700px;
   margin: auto;
-  padding: 40px 0;
-}
-
-.sun {
-  font-size: 65px;
-  animation: float 3s infinite ease-in-out;
-}
-
-h1 {
-  font-size: clamp(38px, 8vw, 58px);
-  margin: 8px 0;
-  color: #ffd1e5;
-  text-shadow: 0 0 25px #ff8db777;
-}
-
-.subtitle {
-  color: #e8d9f2;
-  line-height: 2;
+  padding: 22px 0 45px;
 }
 
 .card {
-  margin-top: 25px;
-  padding: 26px 20px;
-  border: 1px solid #ffcae44d;
+  background: rgba(255,255,255,.85);
+  border: 1px solid #ffffff;
   border-radius: 25px;
-  background: #ffffff0c;
-  box-shadow: 0 15px 50px #0003;
-  backdrop-filter: blur(8px);
+  padding: 24px 18px;
+  margin: 20px 0;
+  box-shadow: 0 8px 28px #b87ba52a;
 }
 
-.card h2 {
-  color: #ffc5df;
-  font-size: 24px;
+h1 {
+  color: #d14c9d;
+  font-size: 34px;
+  margin-bottom: 10px;
 }
 
-#typedMessage {
-  min-height: 190px;
-  color: #fff0f7;
+h2 {
+  color: #bd579b;
+}
+
+p {
+  line-height: 2;
   font-size: 17px;
-  line-height: 2.3;
-  white-space: pre-wrap;
-  text-align: right;
 }
 
-button, .whatsapp {
-  font-family: inherit;
+.music-icon {
+  font-size: 55px;
+  animation: float 2s infinite ease-in-out;
+}
+
+audio {
+  width: 100%;
+  margin: 15px 0;
+}
+
+.song-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #bc4d96;
+}
+
+button {
   border: none;
   border-radius: 30px;
-  padding: 12px 22px;
+  padding: 13px 22px;
   margin: 8px;
-  background: linear-gradient(100deg, #ffc3df, #d8c6ff);
-  color: #351a3d;
-  font-weight: 800;
-  font-size: 15px;
+  background: linear-gradient(135deg, #ec83c2, #b779dc);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  transition: transform .2s;
+  box-shadow: 0 5px 12px #bb72b533;
 }
 
-button:hover, .whatsapp:hover {
-  transform: scale(1.03);
+button:active {
+  transform: scale(.97);
+}
+
+.hidden {
+  display: none;
+}
+
+.message {
+  background: #fff0f8;
+  border-radius: 18px;
+  padding: 18px;
+  margin-top: 15px;
+  line-height: 2;
+  font-size: 17px;
+  animation: appear .5s ease;
 }
 
 .gifts {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+  margin-top: 20px;
 }
 
 .gift {
-  background: #ffffff0b;
-  color: white;
-  border: 1px solid #ffffff25;
-  border-radius: 18px;
-  padding: 18px 8px;
-  margin: 0;
-  line-height: 1.8;
+  background: #fff3fa;
+  border: 2px solid #f4c6e2;
+  border-radius: 20px;
+  padding: 20px 8px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: .2s;
+}
+
+.gift:hover {
+  transform: translateY(-4px);
+  background: #ffe6f4;
 }
 
 .gift span {
   display: block;
-  font-size: 30px;
+  font-size: 38px;
+  margin-bottom: 8px;
 }
 
-.result {
-  display: none;
-  color: #ffe4f1;
-  background: #ffb6d315;
-  border: 1px solid #ffb6d32b;
-  border-radius: 16px;
-  padding: 16px;
-  margin-top: 16px;
-  line-height: 2.1;
-}
-
-#extraMessage {
-  display: none;
-  line-height: 2.2;
-  color: #ffe0ee;
-  margin-top: 20px;
-  animation: fadeIn .8s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-audio {
-  width: 100%;
-  margin: 12px 0;
-}
-
-#musicStatus {
-  color: #e6d5f1;
-  font-size: 13px;
-  line-height: 1.8;
-}
-
-.whatsapp {
-  display: inline-block;
-  margin-top: 12px;
-  text-decoration: none;
-  background: linear-gradient(100deg, #b8f4ce, #d5ffdf);
-  color: #16492b;
-  padding: 14px 24px;
-}
-
-.small {
-  font-size: 12px;
-  color: #cdbbdf;
-  line-height: 1.9;
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 footer {
-  margin-top: 30px;
-  color: #cbb8dc;
-  font-size: 13px;
-  line-height: 2;
+  margin-top: 28px;
+  font-size: 15px;
+  color: #a05c91;
 }
 
 .heart {
   position: fixed;
   bottom: -30px;
+  z-index: -1;
+  animation: rise linear forwards;
   pointer-events: none;
-  animation: rise 4s linear forwards;
 }
 
 @keyframes rise {
   to {
-    transform: translateY(-110vh) rotate(40deg);
+    transform: translateY(-110vh) rotate(30deg);
     opacity: 0;
   }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 380px) {
+  h1 { font-size: 28px; }
+  .card { padding: 20px 13px; }
+  p { font-size: 16px; }
 }
 </style>
 </head>
 
 <body>
-<div id="stars"></div>
 
-<main>
-  <header>
-    <div class="sun">☀️</div>
-    <h1>يا حبيبة 💗</h1>
-    <p class="subtitle">
-      عملتلك حاجة صغيرة، يمكن تخلي يومك ألطف
-      وترسم ضحكة على وشك 🌷
+<div class="container">
+
+  <!-- الأغنية أول حاجة -->
+  <section class="card" id="songSection">
+    <div class="music-icon">🎧💗</div>
+
+    <h2>يا حبيبة، اسمعي دي الأول 🥹</h2>
+
+    <p>
+      قبل ما تكمّلي، عايزك تسمعي الأغنية دي للآخر ❤️
+      <br>
+      اختارتها ليكي مخصوص، يمكن الكلام اللي فيها
+      يعرف يوصّلك إحساس مش عارف أعبّر عنه بالكلام.
+      <br>
+      يمكن تخلّيكي تبتسمي ولو ابتسامة صغيرة،
+      وده لوحده كفاية يخلّي اليوم أحلى. 🌸
     </p>
-  </header>
 
-  <section class="card">
-    <h2>💌 رسالة مخصوص ليكي</h2>
-    <p id="typedMessage"></p>
+    <div class="song-title">🎶 أغنية ليكي يا حبيبة</div>
 
-    <button onclick="startTyping()">اقري الرسالة تاني 💗</button>
-
-    <div id="extraMessage">
-      <p>
-        مش كل يوم لازم يبقى مثالي، ومش لازم تبقي قوية طول الوقت.
-        عادي تتعبي، وعادي تاخدي وقتك، وعادي تسيبي كل حاجة شوية وترتاحي.
-      </p>
-      <p>
-        أتمنى تلاقي في كل يوم سبب صغير يفرّحك،
-        وضحكة حلوة تيجي من قلبك،
-        وحاجة بسيطة تفكّرك إن الأيام الحلوة لسه جاية. 🦋
-      </p>
-      <strong>خلي بالك من نفسك يا حبيبة 🌸💗</strong>
-    </div>
-
-    <button onclick="showExtra()">فيه رسالة تانية مخبيّاها ليكي 🎁</button>
-  </section>
-
-  <section class="card">
-    <h2>🎁 هدايا صغيرة ليكي</h2>
-    <p class="subtitle">اختاري هدية وشوفي الرسالة اللي جواها.</p>
-
-    <div class="gifts">
-      <button class="gift" onclick="openGift(0)">
-        <span>🎀</span>الهدية الأولى
-      </button>
-      <button class="gift" onclick="openGift(1)">
-        <span>🧸</span>الهدية التانية
-      </button>
-      <button class="gift" onclick="openGift(2)">
-        <span>🌈</span>الهدية التالتة
-      </button>
-      <button class="gift" onclick="openGift(3)">
-        <span>🦋</span>الهدية الرابعة
-      </button>
-    </div>
-
-    <div class="result" id="giftResult"></div>
-  </section>
-
-  <section class="card">
-    <h2>🌷 رسالة على مزاجك</h2>
-    <p class="subtitle">اختاري الرسالة اللي محتاجاها دلوقتي.</p>
-
-    <div class="gifts">
-      <button class="gift" onclick="showNote(0)">
-        <span>💗</span>كلمة حلوة
-      </button>
-      <button class="gift" onclick="showNote(1)">
-        <span>🫶</span>وقت للراحة
-      </button>
-      <button class="gift" onclick="showNote(2)">
-        <span>✨</span>شوية أمل
-      </button>
-      <button class="gift" onclick="showNote(3)">
-        <span>😂</span>وقت للضحك
-      </button>
-    </div>
-
-    <div class="result" id="noteResult"></div>
-  </section>
-
-  <section class="card">
-    <h2>🎵 أغنية مع الرسالة</h2>
-    <p class="subtitle">يا رب تعجبك وتخلّي اللحظة دي ألطف.</p>
-
-    <audio id="song" autoplay loop controls preload="auto">
+    <audio id="song" controls loop preload="metadata">
       <source src="tiito.mp3" type="audio/mpeg">
       المتصفح لا يدعم تشغيل الصوت.
     </audio>
 
-    <p id="musicStatus">
-      لو الأغنية مشتغلتش لوحدها، اضغطي على تشغيل 🎶
+    <p>
+      اسمعيها براحتك، وبعدها كمّلي المفاجأة 😉🎁
     </p>
 
-    <button onclick="playSong()">شغّلي الأغنية 🎶</button>
+    <button onclick="goToSurprise()">
+      كمّلي المفاجأة 💕
+    </button>
   </section>
 
-  <section class="card">
-    <h2>💚 طمنيني عليكي</h2>
-    <p class="subtitle">
-      لو خلصتي رحلتك الصغيرة هنا وحسيتي إنك أحسن،
-      ابعتيلي طمنيني إن كله بقى تمام 🌷
+  <!-- بداية المفاجأة -->
+  <section class="card" id="surprise">
+    <h1>يا حبيبة 💗</h1>
+
+    <p>
+      عارف إن ساعات الواحد بيبقى شايل حاجات كتير جواه،
+      ومش بيبقى عنده طاقة يتكلم أو يشرح هو ماله.
+      <br>
+      عشان كده حبيت أعملك حاجة بسيطة،
+      يمكن ترسم ابتسامة على وشك وتفكّرك إن الأيام الحلوة لسه جاية. 🌷
     </p>
 
-    <a
-      class="whatsapp"
-      href="https://wa.me/201025403293?text=%D9%83%D9%84%D9%87%20%D8%A8%D9%82%D9%89%20%D8%AA%D9%85%D8%A7%D9%85%20%F0%9F%98%8A%F0%9F%92%97"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      💚 طمنيني على واتساب
-    </a>
+    <p>
+      مش مطلوب منك تبقي كويسة طول الوقت،
+      ولا لازم تضحكي وإنتِ مش طايقة حاجة.
+      خدي وقتك، واهدي، وافتكري إن كل حاجة صعبة
+      بتعدّي واحدة واحدة. 🫶
+    </p>
 
-    <p class="small">
-      هتفتح محادثة واتساب والرسالة هتكون جاهزة للإرسال.
-      اضغطي إرسال عشان توصل. 💗
+    <button onclick="revealMessage()">
+      دوسي هنا يا حبيبة 💌
+    </button>
+
+    <div id="extraMessage" class="message hidden">
+      أتمنى من قلبي إن الأيام الجاية تبقى أحنّ عليكي،
+      وإن ربنا يعوّض قلبك عن أي حاجة ضايقتك،
+      ويكتبلك فرحة تنسيكي أي زعل.
+      <br>
+      وخلي بالك من نفسك، عشان ابتسامتك تستاهل ترجع. 💗✨
+    </div>
+  </section>
+
+  <!-- علب الهدايا -->
+  <section class="card">
+    <h2>🎁 عندك أربع هدايا صغيرة</h2>
+
+    <p>اختاري أي هدية وافتحيها 😉</p>
+
+    <div class="gifts">
+      <div class="gift" onclick="openGift(0)">
+        <span>🎀</span>
+        هدية رقم ١
+      </div>
+
+      <div class="gift" onclick="openGift(1)">
+        <span>🧸</span>
+        هدية رقم ٢
+      </div>
+
+      <div class="gift" onclick="openGift(2)">
+        <span>💌</span>
+        هدية رقم ٣
+      </div>
+
+      <div class="gift" onclick="openGift(3)">
+        <span>🌷</span>
+        هدية رقم ٤
+      </div>
+    </div>
+
+    <div id="giftMessage" class="message hidden"></div>
+  </section>
+
+  <!-- اختاري رسالة -->
+  <section class="card">
+    <h2>قوليلي محتاجة إيه دلوقتي؟ 💕</h2>
+
+    <p>اختاري اللي على مزاجك، حتى لو مجرد لعبة صغيرة.</p>
+
+    <div class="choices">
+      <button onclick="chooseMood(0)">عايزة أضحك 😂</button>
+      <button onclick="chooseMood(1)">عايزة أروق 🌸</button>
+      <button onclick="chooseMood(2)">عايزة كلام حلو 💗</button>
+      <button onclick="chooseMood(3)">عايزة مفاجأة 🎁</button>
+    </div>
+
+    <div id="moodMessage" class="message hidden"></div>
+  </section>
+
+  <!-- النهاية -->
+  <section class="card">
+    <div style="font-size:45px">💗🌷💗</div>
+
+    <h2>وفي الآخر يا حبيبة...</h2>
+
+    <p>
+      أتمنى تكوني ابتسمتي ولو شوية،
+      وإن المفاجأة البسيطة دي تكون خفّفت عنك ولو جزء صغير.
+      <br>
+      متنسيش إن بكرة يوم جديد، وممكن يحمل حاجات أحلى بكتير
+      من اللي إحنا متوقعينها. 🥹❤️
+    </p>
+
+    <button onclick="sendMessage()">
+      ابعتيلي إنك شفتي المفاجأة 😊
+    </button>
+
+    <p style="font-size:13px">
+      هيفتحلك واتساب برسالة جاهزة، وتقدري تبعتيها بنفسك.
     </p>
   </section>
 
   <footer>
-    رسالة بسيطة، بس أتمنى تعمل فرق حلو في يومك 💗
-    <br>خلي الأيام الجاية ألطف وأجمل يا حبيبة ✨
+    معمول مخصوص عشان أشوف ابتسامتك يا حبيبة 💗
   </footer>
-</main>
+
+</div>
 
 <script>
-const starBox = document.getElementById('stars');
-
-for (let i = 0; i < 65; i++) {
-  const star = document.createElement('span');
-  star.className = 'star';
-  star.textContent = '✦';
-  star.style.left = Math.random() * 100 + '%';
-  star.style.top = Math.random() * 100 + '%';
-  star.style.fontSize = (8 + Math.random() * 12) + 'px';
-  star.style.animationDelay = Math.random() * 3 + 's';
-  starBox.appendChild(star);
-}
-
-const message = `يا اللي شمس الدنيا بتطلع لما تطلع ضحكة منك ☀️
-
-عارفة؟ ساعات أبسط حاجة ممكن تفرق في يومنا،
-كلمة حلوة، موقف يضحّكنا، أو لحظة ننسى فيها كل اللي مضايقنا.
-
-وعشان كده حبيت أعملك الصفحة دي،
-يمكن وإنتِ بتتفرجي عليها تبتسمي ولو ابتسامة صغيرة. 🌷
-
-أتمنى قلبك يرتاح من أي حاجة شاغلاه،
-ويكون بكرة أهدى وأجمل من النهارده.
-
-وافتكري دايمًا:
-مش لازم كل حاجة تبقى تمام عشان تلاقي سبب تبتسمي عشانه. 💗`;
-
-let typingTimer;
-let charIndex = 0;
-
-function startTyping() {
-  clearTimeout(typingTimer);
-  charIndex = 0;
-  document.getElementById('typedMessage').textContent = '';
-  typeNextCharacter();
-}
-
-function typeNextCharacter() {
-  const output = document.getElementById('typedMessage');
-
-  if (charIndex < message.length) {
-    output.textContent += message.charAt(charIndex);
-    charIndex++;
-    typingTimer = setTimeout(typeNextCharacter, 48);
-  }
-}
-
-window.addEventListener('load', () => {
-  startTyping();
-
-  const song = document.getElementById('song');
-
-  song.play().then(() => {
-    document.getElementById('musicStatus').textContent =
-      'الأغنية شغالة 💗 استمتعي باللحظة.';
-  }).catch(() => {
-    document.getElementById('musicStatus').textContent =
-      'المتصفح منع التشغيل التلقائي. اضغطي على تشغيل الأغنية 🎶';
-  });
-});
-
-function playSong() {
-  const song = document.getElementById('song');
-
-  song.play().then(() => {
-    document.getElementById('musicStatus').textContent =
-      'الأغنية شغالة 💗';
-  }).catch(() => {
-    document.getElementById('musicStatus').textContent =
-      'اتأكدي إن ملف tiito.mp3 موجود جنب index.html وبنفس الاسم.';
+function goToSurprise() {
+  document.getElementById("surprise").scrollIntoView({
+    behavior: "smooth"
   });
 }
 
-function showExtra() {
-  const extra = document.getElementById('extraMessage');
-  extra.style.display = 'block';
-  extra.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  makeHearts(10);
+function revealMessage() {
+  const box = document.getElementById("extraMessage");
+  box.classList.toggle("hidden");
 }
 
 const gifts = [
-  '🎀 تذكير صغير: وجودك ممكن يخلّي يوم حد ألطف، حتى من غير ما تاخدي بالك.',
-  '🧸 تصريح رسمي إن من حقك ترتاحي وتاخدي وقت لنفسك من غير ما تلومي نفسك.',
-  '🌈 مفيش يوم وحش بيحكي القصة كلها. لسه فيه لحظات حلوة ممكن تيجي فجأة.',
-  '🦋 أتمنى كل حاجة تقيلة على قلبك تخف، وكل حاجة حلوة مستنياها تيجي في وقتها.'
+  "🎀 هديتك الأولى: أتمنى كل حاجة حلوة في الدنيا تلاقي طريقها ليكي، وإن قلبك يرتاح من أي حاجة تعباه. 💗",
+
+  "🧸 هديتك التانية: لو يومك مش أحسن حاجة، افتكري إن مش كل يوم وحش معناه إن كل اللي جاي وحش. بكرة ممكن يبقى أحلى. 🌷",
+
+  "💌 هديتك التالتة: يمكن مش بعرف أختار الكلام الصح كل مرة، بس أتمنى أي كلمة حلوة توصلك تسيب جواكي أثر حلو. ❤️",
+
+  "🌷 هديتك الرابعة: مهمة النهارده بسيطة: خدي نفس عميق، اشربي حاجة بتحبيها، وادي لنفسك فرصة ترتاح. إنتِ تستاهلي الهدوء."
 ];
 
 function openGift(index) {
-  const box = document.getElementById('giftResult');
+  const box = document.getElementById("giftMessage");
   box.textContent = gifts[index];
-  box.style.display = 'block';
-  makeHearts(5);
+  box.classList.remove("hidden");
 }
 
-const notes = [
-  'حتى لو يومك مش أحسن حاجة، ده مش معناه إن كل حاجة وحشة. إنتِ تستاهلي اللطف والراحة والكلام الحلو. 🌷',
-  'خدي نفس ببطء… مش لازم تحلي كل حاجة دلوقتي. خطوة واحدة كفاية. 🫶',
-  'يمكن بكرة يحمل حاجة حلوة مكنتيش متوقعاها. خليكِ رحيمة بنفسك وادي للأيام فرصة. ✨',
-  'مرة واحد قرر يبطل تأجيل… قال هبدأ من بكرة! 😂 اعتبري دي محاولة رسمية لابتسامة.'
+const moods = [
+  "😂 تحدي صغير: حاولي تفتكري أكتر موقف ضحكك لحد ما دمعت عينيكي. ولو افتكرتيه، ممنوع تضحكي لوحدك!",
+  
+  "🌸 خدي نفس بالراحة، وابعدي عن أي حاجة مضايقاكي لدقايق. مش لازم تحلي كل حاجة دلوقتي.",
+
+  "💗 إنتِ تستاهلي كلام يطمن قلبك، وأيام تخليكي تضحكي من قلبك من غير ما تكوني شايلة هم حاجة.",
+
+  "🎁 مفاجأتك لسه مخلصتش! اختاري هدية من الأربع هدايا اللي فوق، يمكن تلاقي فيها رسالة حلوة ليكي."
 ];
 
-function showNote(index) {
-  const box = document.getElementById('noteResult');
-  box.textContent = notes[index];
-  box.style.display = 'block';
+function chooseMood(index) {
+  const box = document.getElementById("moodMessage");
+  box.textContent = moods[index];
+  box.classList.remove("hidden");
 }
 
-function makeHearts(count) {
-  const symbols = ['💗', '💕', '🌸', '✨', '🦋'];
-
-  for (let i = 0; i < count; i++) {
-    const h = document.createElement('span');
-    h.className = 'heart';
-    h.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-    h.style.left = Math.random() * 100 + 'vw';
-    h.style.fontSize = (17 + Math.random() * 17) + 'px';
-    document.body.appendChild(h);
-    setTimeout(() => h.remove(), 4000);
-  }
+function sendMessage() {
+  const phone = "201025403293";
+  const message = encodeURIComponent("شوفت المفاجأة 😊💗");
+  window.open(
+    "https://wa.me/" + phone + "?text=" + message,
+    "_blank"
+  );
 }
+
+// قلوب متحركة خفيفة في الخلفية
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.textContent = ["💗", "💕", "🌸", "✨"][
+    Math.floor(Math.random() * 4)
+  ];
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (14 + Math.random() * 16) + "px";
+  heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 10000);
+}
+
+setInterval(createHeart, 900);
 </script>
+
 </body>
 </html>
